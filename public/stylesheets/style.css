@@ -1,3 +1,8 @@
+*{
+  margin:0;
+  }
+
+
 body {
   height : 100vh;
   padding: 50px;
@@ -39,4 +44,119 @@ a {
 margin-bottom: 15px;
 color : white;
 font-size: medium;
+}
+
+.navbar {
+  height: 100px;
+  background-color: rgb(219, 216, 216);
+  display: flex;
+  align-items: center;
+}
+
+.navlinks{
+  display: flex;
+  list-style: none
+}
+
+.rightmostelements {
+  margin-left: auto;
+}
+
+.connectionlink, .lasttripslink {
+  margin-right: 30px;
+}
+
+.navtitle {
+  margin-left: 20px;
+}
+
+.connectionlink {
+  color: red;
+}
+
+.lasttripslink {
+  color: black;
+}
+
+.homepagecontainer {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  /* transform: translate(-50%, -50%); */
+}
+
+.frominput, .toinput, .dateinput {
+  margin-left: 30px;
+  height: 40px;
+  font-size: 20px;
+}
+
+.dateinput {
+  margin-right: 20px;
+}
+
+.onewayticketdiv {
+  margin: 20px;
+  color: white;
+}
+
+.gobutton, .okbutton {
+  height: 50px;
+  width: 50px;
+  background-color: rgb(211, 5, 5);
+  border-radius: 20%;
+  color: white;
+  border: none; 
+}
+
+.landmark-img {
+  width: 50%;
+  height: 50%;
+}
+
+.landmark-img-div {
+  margin-top: 30px;
+}
+
+.homepageinput {
+  text-align: center;
+}
+
+.available-container {
+  position: absolute;
+  top: 30%;
+  left: 30%;
+}
+
+.available-trips {
+  height: 100px;
+  width: 700px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0.5px solid lightgrey;
+  border-radius: 2%;
+}
+
+.price-and-button {
+  display: flex;
+  margin-right: 20px;
+}
+
+.available-price {
+  margin-right: 20px;
+}
+
+.tickets-available-text {
+  margin-bottom: 30px;
+  color: white;
+}
+
+.available-destination {
+  margin-left: 20px;
+}
+
+.available-departure-time {
+  color: rgb(141, 140, 140);
 }
