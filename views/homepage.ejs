@@ -16,13 +16,13 @@
     <div class="onewayticketdiv">
       <h1>One-way ticket</h1>
     </div>
-    <div class="homepageinput">
-      <input class="frominput" type="text" placeholder="From: Paris, Marseille.." />
-      <input class="toinput" type="text" placeholder="To: Lille, Nantes..." />
-      <input class="dateinput" type="date">
-      <button class="gobutton">Go</button>
+    <form class="homepageinput" action="/available-selection" method="POST">
+      <input class="frominput" type="text" name="departure" placeholder="From: Paris, Marseille.." />
+      <input class="toinput" type="text" name="arrival" placeholder="To: Lille, Nantes..." />
+      <input class="dateinput" type="date" name="date">
+      <button class="gobutton" type="submit">Go</button>
       <div class="landmark-img-div"><img class="landmark-img" src="./images/landmark.png" /></div>
-    </div>
+    </form>
   </div>
 </body>
 
