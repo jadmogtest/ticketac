@@ -13,21 +13,23 @@
 
   <div class="available-container">
     <div class="tickets-available-text">
-      <h1>Tickets available on 02/08</h1>
+      <h1>Tickets available on <%=journeyDay%>/<%=journeyMonth%></h1>
     </div>
     <div>
+      <%for(let i = 0; i < journeyList.length; i++){%>
       <div class="available-trips">
         <div class="available-destination">
-          <h3>Paris/Lille</h3>
+          <h3><%=journeyList[i].departure%>/<%=journeyList[i].arrival%></h3>
         </div>
         <div class="available-departure-time">
-          <p>train departure at: 15pm</p>
+          <p>train departure at: <%=journeyList[i].departureTime%></p>
         </div>
         <div class="price-and-button">
-          <h1 class="available-price">93$</h1>
-          <button class="okbutton">OK</button>
+          <h1 class="available-price"><%=journeyList[i].price%>$</h1>
+          <a href="/panier?journey=<%=journeyList[i]._id%>"><button class="okbutton">OK</button></a>
         </div>
       </div>
+      <%}%>
     </div>
   </div>
 </body>
