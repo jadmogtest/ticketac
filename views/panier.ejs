@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 
-<body >
+<body>
   <%- include('navbar'); %>
   <div id="table" class="container-fluid home">
     <div class="row">
@@ -30,54 +30,42 @@
           </tr>
         </thead>
         <tbody>
-          <%for(let i = 0; i < panier.length; i++){%>
+          <% var total = 0;
+          for(let i = 0; i < panier.length; i++){%>
           <tr>
             <th scope="row"><%=i+1%></th>
-            <td><%=panier[i].departure%>/<%=panier[i].arrival%></td>
-            <td><%=panier[i].date%></td>
-            <td><%=panier[i].departureTime%></td>
-            <td><%=panier[i].price%>$</td>
+            <td class="trajet"><%=panier[i].departure%>/<%=panier[i].arrival%></td>
+            <td class="date"><%=dateformat(panier[i].date)%></td>
+            <td class="depart"><%=panier[i].departureTime%></td>
+            <td class="prix"><%=panier[i].price%>$</td>
           </tr>
-          <%}%>
-              <!-- <tr>
-                <th scope="row">1</th>
-                <td>Paris/lille</td>
-                <td>02/03/2019</td>
-                <td>15:00 pm</td>
-                <td>93$</td>
-               </tr>
-              <tr>
-                <th scope="row">1</th>
-                <td>Paris/lille</td>
-                <td>02/03/2019</td>
-                <td>15:00 pm</td>
-                <td>93$</td>
-               </tr>
-              <tr>
-                <th scope="row">Total</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>93$</td>
-               </tr> -->
-            </tbody>
-           </table>
-         <div id="bouton" class="d-flex justify-content-end">
-           <button type="submit" class="btn btn-danger">Confirmer</button>
-        </div>
+          <% total += panier[i].price}%>
+          <tr>
+            <th scope="row">Total</th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id="total"><%= total%>$</td>
+          </tr>
+        </tbody>
+      </table>
+      <div id="bouton" class="d-flex justify-content-end">
+        <input type="hidden" id="">
+        <a href="/homepage"><button type="submit" class="btn btn-danger" onClick="alertfunc()">Confirmer</button></a>
+      </div>
 
-
-
-        </div>
 
 
     </div>
 
 
+  </div>
 
 
 
 
 
 
-  </body>
+
+  <script src="../js/funcscript.js"></script>
+</body>

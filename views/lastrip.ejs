@@ -1,71 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>TicketTac</title>
-    <!-- To add in order to scale the view for mobiles -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-  </head>
 
-  <body >
-    <%- include('navbar');%>
+<head>
+  <meta charset="utf-8">
+  <title>TicketTac</title>
+  <!-- To add in order to scale the view for mobiles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
 
-    <div id="table" class="container-fluid home">
-        <div class="row">
-           <div id="titre" class ="offset-2">
-               My last trips :
-           </div>
-            
-           <table class="table table-light ">
-            <thead>
-              <tr>
-                <th scope="col">Date</th>
-                <th scope="col">Journey</th>
-                <th scope="col">Departure Time</th>
-                <th scope="col">Price</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>02/03/2019</td>
-                <td>Paris/lille</td>
-                <td>15:00 pm</td>
-                <td>93$</td>
-              </tr>
-              <tr>
-                <td>02/03/2019</td>
-                <td>Paris/lille</td>
-                <td>02/03/2019</td>
-                <td>15:00 pm</td>
-                <td>93$</td>
-               </tr>
-              <tr>
-                <td>02/03/2019</td>
-                <td>Paris/lille</td>
-                <td>15:00 pm</td>
-                <td>93$</td>
-               </tr>
-              
-            </tbody>
-           </table>
-         <div id="bouton" class="d-flex justify-content-end">
-           <button type="submit" class="btn btn-danger">Confirmer</button>
-        </div>
+<body>
+  <%- include('navbar');%>
 
+  <div id="table" class="container-fluid home">
+    <div class="row">
+      <div id="titre" class="offset-2">
+        My last trips :
+      </div>
 
+      <table class="table table-light ">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Journey</th>
+            <th scope="col">Departure Time</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for(let i = 0; i < lastrips.length; i++){%>
+          <tr>
+            <td><%=dateformat(lastrips[i].date)%></td>
+            <td><%=lastrips[i].departure%>/<%=lastrips[i].arrival%></td>
+            <td><%=lastrips[i].departureTime%></td>
+            <td><%=lastrips[i].price%>$</td>
+          </tr>
+          <%}%>
+          <tr>
+            <td>02/03/2019</td>
+            <td>Paris/lille</td>
+            <td>02/03/2019</td>
+            <td>15:00 pm</td>
+            <td>93$</td>
+          </tr>
+          <tr>
+            <td>02/03/2019</td>
+            <td>Paris/lille</td>
+            <td>15:00 pm</td>
+            <td>93$</td>
+          </tr>
 
-        </div>
+        </tbody>
+      </table>
+      <div id="bouton" class="d-flex justify-content-end">
+       <a href="/homepage"><button type="submit" class="btn btn-danger">Home</button></a> 
+      </div>
+
 
 
     </div>
 
 
+  </div>
 
 
 
 
 
 
-  </body>
+
+
+</body>

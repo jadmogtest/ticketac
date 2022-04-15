@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-
+var lastripModel = require('../models/lastrips.js');
 const mongoose = require('mongoose');
 
 // useNewUrlParser ;)
@@ -12,8 +12,8 @@ var options = {
 
 // --------------------- BDD -----------------------------------------------------
 mongoose.connect('mongodb+srv://jadmog:testpassword@cluster0.8wjqo.mongodb.net/ticketac?retryWrites=true&w=majority',
-   options,
-   function(err) {
+  options,
+  function (err) {
     if (err) {
       console.log(`error, failed to connect to the database because --> ${err}`);
     } else {
@@ -36,7 +36,7 @@ var city = ["Paris", "Marseille", "Nantes", "Lyon", "Rennes", "Melun", "Bordeaux
 var date = ["2018-11-20", "2018-11-21", "2018-11-22", "2018-11-23", "2018-11-24"]
 
 /* GET home page. */
-router.get('/homepage', function(req, res, next) {
+router.get('/homepage', function (req, res, next) {
   res.render('homepage', { title: 'Express' });
 
 });
@@ -63,7 +63,18 @@ router.get('/panier', async function (req, res, next) {
 
   let journey = await journeyModel.findOne({ _id: req.query.journey });
 
+
   req.session.panier.push(journey);
+
+  var lastrip = new lastripModel({
+    departure: journey.departure,
+    arrival: journey.arrival,
+    date: journey.date,
+    departureTime: journey.departureTime,
+    price: journey.price,
+  });
+
+  await lastrip.save();
 
   console.log(req.session.panier);
   res.render('panier', { panier: req.session.panier });
@@ -99,14 +110,22 @@ router.post('/available-selection', async function (req, res, next) {
 });
 
 /* Get Panier page*/
-router.get('/available', function(req, res, next) {
+router.get('/available', function (req, res, next) {
   res.render('available', { title: 'Express' });
 
 });
 
 /* Get Panier page*/
-router.get('/lastrip', function(req, res, next) {
-  res.render('lastrip', { title: 'Express' });
+router.get('/lastrip', async function (req, res, next) {
+
+  if (!req.session.lastrips) {
+    req.session.lastrips = [];
+  }
+
+  req.session.lastrips = await lastripModel.find();
+
+
+  res.render('lastrip', { lastrips: req.session.lastrips });
 
 });
 
