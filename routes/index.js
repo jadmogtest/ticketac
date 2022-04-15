@@ -11,7 +11,7 @@ var options = {
  };
 
 // --------------------- BDD -----------------------------------------------------
-mongoose.connect('mongodb+srv://XXXXXXXX:*********@XXXXXXXX-0hsfc.mongodb.net/Ticketac?retryWrites=true',
+mongoose.connect('mongodb+srv://jadmog:testpassword@cluster0.8wjqo.mongodb.net/ticketac?retryWrites=true&w=majority',
    options,
    function(err) {
     if (err) {
@@ -35,7 +35,11 @@ var journeyModel = mongoose.model('journey', journeySchema);
 var city = ["Paris","Marseille","Nantes","Lyon","Rennes","Melun","Bordeaux","Lille"]
 var date = ["2018-11-20","2018-11-21","2018-11-22","2018-11-23","2018-11-24"]
 
+/* GET home page. */
+router.get('/homepage', function(req, res, next) {
+  res.render('homepage', { title: 'Express' });
 
+});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -46,6 +50,18 @@ router.get('/', function(req, res, next) {
 /* Get Panier page*/
 router.get('/panier', function(req, res, next) {
   res.render('panier', { title: 'Express' });
+
+});
+
+/* Get Panier page*/
+router.get('/available', function(req, res, next) {
+  res.render('available', { title: 'Express' });
+
+});
+
+/* Get Panier page*/
+router.get('/lastrip', function(req, res, next) {
+  res.render('lastrip', { title: 'Express' });
 
 });
 
